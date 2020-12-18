@@ -1,0 +1,19 @@
+.btnScrollTop {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 9999;
+  // opacity: 0;
+  // transition: all 0.2s ease-in-out;
+
+  // &.show {
+  //   opacity: 1;
+  //   transition: all 0.2s ease-in-out;
+  // }
+}
+
+footer {
+  background-color: orangered;
+  color: white;
+  padding: 15px;
+}

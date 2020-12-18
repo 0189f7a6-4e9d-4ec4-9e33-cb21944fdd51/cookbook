@@ -1,0 +1,50 @@
+<div class="min-vh-100 d-flex flex-column">
+  <!----------------------------------------------->
+  <!-- Navbar  -->
+  <!----------------------------------------------->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" [routerLink]="['/']">Cookbook</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{exact:true}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/verlauf']" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{exact:true}">Verlauf</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/info']" [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{exact:true}">Info</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!----------------------------------------------->
+  <!-- Router outlet  -->
+  <!----------------------------------------------->
+  <router-outlet #o="outlet" (activate)="onActivate($event)"></router-outlet>
+
+  <!----------------------------------------------->
+  <!-- Footer  -->
+  <!----------------------------------------------->
+  <footer class="mt-auto">
+    <div class="container">
+      Das ist ein Testprojekt!
+    </div>
+  </footer>
+
+  <!----------------------------------------------->
+  <!-- Scroll to top button-->
+  <!----------------------------------------------->
+  <button class="btnScrollTop" mat-fab color="primary" aria-label="Scroll nach" *ngIf="windowScrolled"
+    (click)="scrollToTop()" [@inOutAnimation]>
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </button>
+</div>
