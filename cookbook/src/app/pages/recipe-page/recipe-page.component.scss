@@ -1,0 +1,28 @@
+h2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.list-group {
+  .list-group-item:nth-child(odd) {
+    background-color: lightyellow;
+  }
+}
+
+.carousel-image {
+  height: 500px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 1199px) {
+  .carousel-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .carousel-image {
+    height: 250px;
+  }
+}

@@ -1,0 +1,49 @@
+<div class="container">
+  <ng-template [ngIf]="loading | async" [ngIfElse]="content">
+    <div class="text-center mt-5">
+      <mat-spinner class="d-inline-block" [diameter]="75"></mat-spinner>
+    </div>
+  </ng-template>
+  <ng-template #content>
+    <h1 class="mt-3">{{recipe.name}}</h1>
+
+    <div class="jumbotron">
+      <div id="carouselControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div [style.backgroundImage]="'url('+recipe.imageURL+')'" class="d-block w-100 carousel-image"
+              [title]="recipe.name"></div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <h2>Zutaten:</h2>
+    <ul class="list-group mb-3">
+      <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient.name}}
+      </li>
+    </ul>
+
+    <h2>Zubereitung:</h2>
+    <mat-chip-list class="d-block mb-3">
+      <mat-chip>
+        <mat-icon class="mr-1">schedule</mat-icon>
+        {{recipe.duration}} Minuten
+      </mat-chip>
+    </mat-chip-list>
+    <ul class="list-group mb-3">
+      <li class="list-group-item" *ngFor="let step of recipe.steps">
+        {{step}}
+      </li>
+    </ul>
+  </ng-template>
+</div>

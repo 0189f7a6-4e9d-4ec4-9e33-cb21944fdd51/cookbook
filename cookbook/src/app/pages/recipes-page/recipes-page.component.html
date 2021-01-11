@@ -1,0 +1,66 @@
+<!----------------------------------------------->
+<!-- ChipList filter control  -->
+<!----------------------------------------------->
+<div class="input-section">
+  <div class="container">
+    <div class="input-wrapper">
+      <mat-form-field class="chip-list">
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let ingredient of ingredients" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(ingredient)">
+            {{ingredient}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="Zutaten..." #ingredientInput [formControl]="ingredientCtrl" [matAutocomplete]="auto"
+            [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let ingredient of filteredIngredients | async | orderBy" [value]="ingredient">
+            {{ingredient}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<!----------------------------------------------->
+<!-- List of recipes -->
+<!----------------------------------------------->
+<div class="container-fluid">
+  <ng-template [ngIf]="loading | async" [ngIfElse]="showRecipes">
+    <div class="text-center mt-5">
+      <mat-spinner class="d-inline-block" [diameter]="75"></mat-spinner>
+    </div>
+  </ng-template>
+  <ng-template #showRecipes>
+    <div class="row">
+      <div class="col" *ngFor="let recipe of recipes">
+        <mat-card class="card" [routerLink]="['/recipe', recipe.id]">
+          <mat-card-header>
+            <div mat-card-avatar class="header-image" [style.backgroundImage]="'url('+ recipe.imageURL +')'"></div>
+            <mat-card-title title="{{recipe.name}}">{{recipe.name}}</mat-card-title>
+            <mat-card-subtitle title="Dauer: {{recipe.duration}} Minuten">Dauer: {{recipe.duration}} Minuten
+            </mat-card-subtitle>
+          </mat-card-header>
+          <div mat-card-image class="card-image" [style.backgroundImage]="'url('+ recipe.imageURL +')'"
+            [title]="recipe.name"></div>
+          <mat-card-content>
+            <ul>
+              <li *ngFor="let step of recipe.steps">
+                {{step}}
+              </li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Öffnen</button>
+            <button mat-button>
+              <mat-icon>share</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>
+</div>

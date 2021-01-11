@@ -1,0 +1,93 @@
+.input-section {
+  background-color: orangered;
+  margin-bottom: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+  .input-wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+
+    .chip-list {
+      width: 100%;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .card {
+    .mat-card-header-text {
+      overflow: hidden;
+    }
+  }
+}
+
+.col {
+  flex: 0 0 calc(100% / 5);
+  overflow: hidden;
+
+  .card {
+    max-width: 100%;
+    margin-bottom: 15px;
+
+    mat-card-subtitle,
+    mat-card-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-image {
+      background-size: cover;
+    }
+
+    .card-image {
+      height: 230px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+
+    mat-card-content {
+      height: 100px;
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-image: linear-gradient(to bottom, transparent 0%, white 40%);
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        font-weight: 500;
+        height: 120px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .col {
+    flex: 0 0 calc(100% / 4);
+  }
+}
+
+@media (max-width: 991px) {
+  .col {
+    flex: 0 0 calc(100% / 3);
+  }
+}
+
+@media (max-width: 767px) {
+  .col {
+    flex: 0 0 calc(100% / 2);
+  }
+}
+
+@media (max-width: 575px) {
+  .col {
+    flex: 0 0 calc(100%);
+  }
+}
