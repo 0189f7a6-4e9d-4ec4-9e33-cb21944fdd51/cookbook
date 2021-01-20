@@ -98,8 +98,9 @@ export class RecipesPageComponent implements OnInit {
    */
   private addIngredients(ingredients: Ingredient[]): void {
     for (const ingredient of ingredients) {
-      if (this.allIngredients.indexOf(ingredient.name) < 0) {
-        this.allIngredients.push(ingredient.name);
+      const ingredientName = ingredient.name?.trim();
+      if (this.allIngredients.indexOf(ingredientName) < 0) {
+        this.allIngredients.push(ingredientName);
       }
     }
   }

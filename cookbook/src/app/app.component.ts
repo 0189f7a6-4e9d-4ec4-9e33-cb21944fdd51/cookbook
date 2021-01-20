@@ -56,7 +56,6 @@ export class AppComponent implements OnInit {
    */
   public scrollToTop(): void {
     (function smoothscroll(): void {
-      throw new Error('I\'m the bug, fix me!');
       const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
       if (currentScroll > 0) {
         window.requestAnimationFrame(smoothscroll);
